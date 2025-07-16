@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vasooli Exchange - Fantasy Gaming</title>
+    <!-- Google Fonts - Inter for a clean, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic body styling for context, not part of the cover photo itself */
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column; /* Arrange header, main, footer vertically */
+            min-height: 100vh;
+            background-color: #f0f2f5; /* Light gray background for preview */
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+        }
+
+        /* Header Styling */
+        header {
+            background: #0A2342; /* Deep blue from your logo */
+            color: white;
+            padding: 1rem 5%; /* Responsive padding */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+            min-height: 60px; /* Ensure header has a minimum height */
+        }
+        .header-logo {
+            height: 35px; /* Responsive height */
+            /* Ensure the content URL is always correct */
+            content: url('https://placehold.co/150x35/ffffff/0A2342?text=VASOOLI+EXCHANGE'); /* Placeholder */
+            flex-shrink: 0; /* Prevent logo from shrinking */
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px; /* Space between links */
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            white-space: nowrap; /* Prevent links from breaking */
+        }
+        .nav-links a:hover {
+            color: #007bff; /* Accent blue on hover */
+        }
+        /* Responsive navigation for smaller screens */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                padding: 1rem;
+                align-items: flex-start; /* Align items to start for stacking */
+            }
+            .header-logo {
+                margin-bottom: 10px; /* Space below logo when stacked */
+            }
+            .nav-links {
+                margin-top: 10px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center; /* Center links when wrapped */
+                width: 100%; /* Take full width for wrapping */
+                gap: 10px; /* Reduce gap for smaller screens */
+            }
+            .nav-links a {
+                margin: 0 5px; /* Adjust margin for wrapped links */
+            }
+        }
+
+        /* Main Content Area - Now full screen */
+        main {
+            flex-grow: 1; /* Allows main content to take available space */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0; /* Remove padding from main as it's now full screen */
+            box-sizing: border-box;
+
+            /* Full-screen background styles from previous .hero-section-container */
+            background: linear-gradient(135deg, #0A2342 0%, #1A3A60 100%);
+            color: white; /* Default text color */
+            position: relative;
+            overflow: hidden;
+            /* Removed border-radius and box-shadow as it's now full width/height */
+        }
+
+        /* Subtle abstract background pattern for visual interest */
+        .abstract-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* SVG for a subtle network/grid pattern */
+            background-image: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="gridPattern" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 L 0 10" fill="none" stroke="%23ffffff" stroke-width="0.1" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23gridPattern)"/></svg>');
+            background-size: 20px 20px; /* Size of the pattern */
+            opacity: 0.08; /* Very subtle opacity */
+            z-index: 0; /* Behind other content */
+        }
+
+        /* Logo Area Styling within the main section (hero) */
+        .hero-logo-area {
+            position: absolute; /* Position independently relative to main */
+            top: clamp(10px, 2.5vw, 20px); /* Responsive top positioning */
+            left: clamp(10px, 2.5vw, 20px); /* Responsive left positioning */
+            display: flex;
+            align-items: center;
+            z-index: 2; /* Above the pattern */
+        }
+        .hero-logo-img {
+            height: clamp(30px, 5vw, 40px); /* Responsive height for logo */
+            /* You can replace this placeholder with your actual logo.
+               For example: src="https://yourwebsite.com/images/vasooli-logo.png" */
+            content: url('https://placehold.co/150x40/ffffff/0A2342?text=VASOOLI+EXCHANGE'); /* Placeholder */
+        }
+
+        /* Main Content Area (Headline and Sub-headline) within the hero */
+        .main-content-hero { /* Renamed to avoid conflict with main tag */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
+            /* Responsive padding to keep content from edges */
+            padding: clamp(20px, 5vw, 40px); 
+            box-sizing: border-box; /* Include padding in width/height */
+            width: 100%; /* Take full width of parent */
+            max-width: 800px; /* Max width for content readability */
+            z-index: 2; /* Above the pattern */
+        }
+        .headline {
+            /* Responsive font size using clamp */
+            font-size: clamp(28px, 6vw, 48px); /* Increased max size for full screen */
+            font-weight: 700; /* Bold */
+            line-height: 1.2;
+            margin-bottom: clamp(10px, 2vw, 20px);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Text shadow for readability */
+        }
+        .sub-headline {
+            /* Responsive font size using clamp */
+            font-size: clamp(16px, 3vw, 22px); /* Increased max size for full screen */
+            opacity: 0.9;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Text shadow for readability */
+            margin-bottom: clamp(20px, 4vw, 40px); /* Responsive margin for button */
+        }
+
+        /* WhatsApp Button Styling */
+        .whatsapp-button {
+            display: inline-flex; /* Allows icon and text to sit side-by-side */
+            align-items: center;
+            background-color: #25D366; /* WhatsApp green */
+            color: white;
+            /* Responsive padding using clamp */
+            padding: clamp(12px, 3vw, 18px) clamp(25px, 6vw, 40px); /* Larger padding for prominence */
+            border-radius: 30px; /* More rounded pill shape */
+            text-decoration: none; /* Remove underline from link */
+            font-weight: 600;
+            /* Responsive font size using clamp */
+            font-size: clamp(16px, 2.8vw, 20px); /* Larger font for prominence */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* More prominent shadow */
+        }
+        .whatsapp-button:hover {
+            background-color: #1DA851; /* Darker green on hover */
+            transform: translateY(-3px); /* Slight lift effect */
+        }
+        .whatsapp-icon {
+            /* Responsive icon size using clamp */
+            width: clamp(20px, 3.5vw, 28px); /* Larger icon */
+            height: clamp(20px, 3.5vw, 28px);
+            margin-right: clamp(8px, 2vw, 12px);
+        }
+
+        /* Disclaimer Text Styling (CRITICAL for compliance) */
+        .disclaimer {
+            /* Position at the bottom of the main section */
+            position: absolute;
+            bottom: clamp(10px, 2.5vw, 20px); /* Responsive bottom positioning */
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - clamp(20px, 5vw, 40px)); /* Full width minus padding */
+            max-width: 700px; /* Max width for readability */
+            
+            font-size: clamp(10px, 1.8vw, 13px); /* Slightly larger for readability */
+            font-weight: 500;
+            color: #FFDDC1; /* A light, readable color on dark background */
+            background-color: rgba(0, 0, 0, 0.7); /* More opaque background for contrast */
+            padding: clamp(5px, 1.5vw, 8px) clamp(10px, 2.5vw, 15px); 
+            border-radius: 4px;
+            line-height: 1.4;
+            z-index: 2; /* Above the pattern */
+        }
+        /* Adjust disclaimer for very small screens */
+        @media (max-width: 400px) {
+            .disclaimer {
+                position: static; /* Allow it to flow naturally */
+                transform: none;
+                margin-top: 20px; /* Add margin if not absolute */
+                width: auto; /* Auto width */
+                padding: 8px 12px;
+            }
+        }
+
+
+        /* Footer Styling */
+        footer {
+            background: #1A3A60; /* Slightly lighter blue for footer */
+            color: white;
+            padding: 1rem 5%; /* Responsive padding */
+            text-align: center;
+            font-size: 0.85rem;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .footer-links {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px; /* Space between links */
+        }
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: #007bff; /* Accent blue on hover */
+        }
+        .footer-copyright {
+            margin-top: 15px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://placehold.co/150x35/ffffff/0A2342?text=VASOOLI+EXCHANGE" alt="Vasooli Exchange Logo" class="header-logo">
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Contests</a>
+            <a href="#">Support</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="abstract-pattern"></div>
+        
+        <div class="hero-logo-area">
+            <!-- Your actual Vasooli Exchange logo will go here -->
+            <img src="https://placehold.co/150x40/ffffff/0A2342?text=VASOOLI+EXCHANGE" alt="Vasooli Exchange Logo" class="hero-logo-img">
+        </div>
+
+        <div class="main-content-hero">
+            <h1 class="headline">Your Skill. Your Game. Your Win.</h1>
+            <p class="sub-headline">Master Fantasy Sports. Play Responsibly.</p>
+            
+            <!-- WhatsApp Button Added Here -->
+            <a href="https://alvo.chat/6k5V" target="_blank" class="whatsapp-button">
+                <svg class="whatsapp-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.91L2.05 22L7.3 20.61C8.75 21.46 10.38 21.91 12.04 21.91C17.5 21.91 21.95 17.46 21.95 12C21.95 6.45 17.5 2 12.04 2ZM17.18 15.77C16.94 16.21 16.31 16.38 15.8 16.23C15.28 16.08 14.73 15.85 14.17 15.54C13.06 14.93 11.81 14.07 10.61 12.92C9.41 11.77 8.53 10.45 7.91 9.35C7.59 8.79 7.37 8.24 7.21 7.73C7.06 7.21 7.22 6.59 7.66 6.35C8.04 6.14 8.49 6.13 8.87 6.2C9.25 6.27 9.59 6.52 9.87 6.84L10.59 7.74C10.87 8.06 11.04 8.42 11.16 8.74C11.28 9.06 11.33 9.35 11.21 9.69C11.09 10.03 10.74 10.44 10.43 10.75C10.12 11.06 9.8 11.39 9.57 11.62C9.34 11.85 9.12 12.07 9.01 12.29C8.9 12.51 8.86 12.72 8.95 13.01C9.04 13.3 9.34 13.62 9.65 13.93C9.96 14.24 10.29 14.56 10.61 14.88C11.28 15.55 11.99 16.14 12.7 16.63C13.41 17.12 14.15 17.44 14.89 17.53C15.63 17.62 16.28 17.43 16.71 16.99C17.14 16.55 17.31 15.92 17.18 15.77Z"/>
+                    </svg>
+                    Chat with us on WhatsApp
+                </a>
+            </div>
+
+            <div class="disclaimer">
+                This game involves an element of financial risk and may be addictive. Please play responsibly and at your own risk. 18+ Only.
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Responsible Gaming</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <p class="footer-copyright">&copy; 2025 Vasooli Exchange. All rights reserved.</p>
+    </footer>
+</body>
+</html>
